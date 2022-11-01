@@ -60,12 +60,11 @@ public class CardSearchServiceTest {
         cardIds.add("test2");
 
         when(CardStore.getInstance()).thenReturn(cardStore);
-    //    doReturn(cardStore).when(CardStore.getInstance());
         when(cardStore.getAllCardIds()).thenReturn(cardIds);
         when(cardStore.getCard("test1")).thenReturn(card1);
         when(cardStore.getCard("test2")).thenReturn(card2);
 
-        Assert.assertEquals(cardSearchService.getCardsContainingLabel("label1").size(), 1);
+        Assert.assertEquals(1, cardSearchService.getCardsContainingLabel("label1").size());
     }
 
 }
