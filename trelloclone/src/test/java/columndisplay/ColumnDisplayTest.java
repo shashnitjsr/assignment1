@@ -42,7 +42,7 @@ public class ColumnDisplayTest {
         Map<String, Card> cardMap = new HashMap<>();
         cardMap.put("test1", new Card());
         cardMap.put("test2", new Card());
-        when(column.getCardMap()).thenReturn(cardMap);
+        column.setCardMap(cardMap);
         when(ColumnStore.getInstance()).thenReturn(columnStore);
         when(columnStore.getColumn("test1")).thenReturn(column);
         Assert.assertEquals(2, columnDisplayService.displayCardsInColumn("test1").size());
