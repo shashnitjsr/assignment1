@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ColumnStore {
-    Map<String, Column> columnMap = new HashMap<>();
+
+    private Map<String, Column> columnMap = new HashMap<>();
     private static ColumnStore columnStore = new ColumnStore();
 
     private ColumnStore() {

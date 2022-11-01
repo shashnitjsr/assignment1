@@ -5,9 +5,9 @@ import java.util.Map;
 public class Column {
 
     private String id;
-    Map<String, Label> cardMap;
+    private Map<String, Card> cardMap;
 
-    public Column(String id, Map<String, Label> cardMap) {
+    public Column(String id, Map<String, Card> cardMap) {
         this.id = id;
         this.cardMap = cardMap;
     }
@@ -23,11 +23,11 @@ public class Column {
         this.id = id;
     }
 
-    public Map<String, Label> getCardMap() {
+    public Map<String, Card> getCardMap() {
         return cardMap;
     }
 
-    public void setCardMap(Map<String, Label> cardMap) {
+    public void setCardMap(Map<String, Card> cardMap) {
         this.cardMap = cardMap;
     }
 }
