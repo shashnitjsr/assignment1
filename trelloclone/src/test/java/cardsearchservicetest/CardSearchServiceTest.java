@@ -5,9 +5,13 @@ import cardsearchservice.CardsSearchServiceImpl;
 import enitites.Card;
 import enitites.Label;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 import store.CardStore;
 
 import java.util.HashMap;
@@ -16,7 +20,10 @@ import java.util.Map;
 import java.util.Set;
 
 import static org.mockito.Mockito.when;
+import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(fullyQualifiedNames = "store.*")
 public class CardSearchServiceTest {
 
     @Mock
@@ -24,6 +31,11 @@ public class CardSearchServiceTest {
 
     @InjectMocks
     CardsSearchService cardSearchService = new CardsSearchServiceImpl();
+
+    @Before
+    public void beforeAll() {
+        mockStatic(CardStore.class);
+    }
 
     @Test
     public void testCardSearchService() {
@@ -47,7 +59,8 @@ public class CardSearchServiceTest {
         cardIds.add("test1");
         cardIds.add("test2");
 
-
+        when(CardStore.getInstance()).thenReturn(cardStore);
+    //    doReturn(cardStore).when(CardStore.getInstance());
         when(cardStore.getAllCardIds()).thenReturn(cardIds);
         when(cardStore.getCard("test1")).thenReturn(card1);
         when(cardStore.getCard("test2")).thenReturn(card2);
