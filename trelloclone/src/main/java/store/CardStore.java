@@ -2,7 +2,9 @@ package store;
 
 import enitites.Card;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class CardStore {
     Map<String, Card> cardMap = new HashMap<>();
@@ -22,5 +24,9 @@ public class CardStore {
 
     public Card getCard(String id) {
         return cardMap.get(id);
+    }
+
+    public Set<String> getAllCardIds() {
+        return cardMap.keySet();
     }
 }

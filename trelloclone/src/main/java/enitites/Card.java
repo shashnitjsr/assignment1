@@ -5,7 +5,7 @@ import java.util.Map;
 public class Card {
 
     private String id;
-    Map<String, Label> labelMap;
+    private Map<String, Label> labelMap;
     private long createdTimeInMillis;
     private long lastUpdatedTimeInMillis;
 
