@@ -5,7 +5,7 @@ import java.util.Map;
 public class Board {
 
     private String id;
-    Map<String, Column> columnMap;
+    private Map<String, Column> columnMap;
 
     public Board(String id, Map<String, Column> columnMap) {
         this.id = id;

@@ -4,7 +4,6 @@ import enitites.User;
 import java.util.HashMap;
 import java.util.Map;
 
-//Singleton class
 public class UserStore {
    Map<String, User> userMap = new HashMap<>();
    private static UserStore userStore = new UserStore();

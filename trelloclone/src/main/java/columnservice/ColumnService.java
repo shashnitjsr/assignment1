@@ -1,4 +1,4 @@
-package columndisplay;
+package columnservice;
 
 import enitites.Card;
 import java.util.List;

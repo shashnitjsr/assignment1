@@ -1,7 +1,6 @@
 package store;
 
 import enitites.Board;
-import enitites.Label;
 
 import java.util.HashMap;
 import java.util.Map;
