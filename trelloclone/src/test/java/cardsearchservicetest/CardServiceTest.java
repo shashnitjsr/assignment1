@@ -121,8 +121,8 @@ public class CardServiceTest {
         user1.setLastVisitedTimeInMillis(6);
 
         User user2 = new User();
-        user1.setId("user2");
-        user1.setLastVisitedTimeInMillis(6);
+        user2.setId("user2");
+        user2.setLastVisitedTimeInMillis(6);
 
         card1.setUser(user1);
         card2.setUser(user1);

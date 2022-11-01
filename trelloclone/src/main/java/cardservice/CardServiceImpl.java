@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class CardServiceImpl implements CardService {
 
@@ -46,6 +47,9 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public List<Card> getCardsHighlightedForAUser(User user) {
-        return null;
-    }
+        return cardStore.getAllCardIds().stream()
+                .map(id -> cardStore.getCard(id))
+                .filter(card -> card.getUser().getId().equals(user.getId()) && card.getLastUpdatedTimeInMillis() > user.getLastVisitedTimeInMillis())
+                .collect(Collectors.toList());
+      }
 }
