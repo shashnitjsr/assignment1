@@ -1,4 +1,4 @@
-package cardsearchservice;
+package cardservice;
 
 import enitites.Card;
 import enitites.Label;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class CardsSearchServiceImpl implements CardsSearchService {
+public class CardServiceImpl implements CardService {
 
     private CardStore cardStore = CardStore.getInstance();
 
@@ -28,5 +28,10 @@ public class CardsSearchServiceImpl implements CardsSearchService {
             }
         }
         return cards;
+    }
+
+    @Override
+    public List<Card> getCardsCreatedAfterGivenTimeStamp(long timeInMillis) {
+        return null;
     }
 }

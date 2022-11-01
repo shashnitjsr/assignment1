@@ -1,7 +1,6 @@
 package cardsearchservicetest;
 
-import cardsearchservice.CardsSearchService;
-import cardsearchservice.CardsSearchServiceImpl;
+import cardservice.CardServiceImpl;
 import enitites.Card;
 import enitites.Label;
 import org.junit.Assert;
@@ -24,13 +23,13 @@ import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(fullyQualifiedNames = "store.*")
-public class CardSearchServiceTest {
+public class CardServiceTest {
 
     @Mock
     CardStore cardStore;
 
     @InjectMocks
-    CardsSearchService cardSearchService = new CardsSearchServiceImpl();
+    cardservice.CardService cardSearchService = new CardServiceImpl();
 
     @Before
     public void beforeAll() {
@@ -65,6 +64,35 @@ public class CardSearchServiceTest {
         when(cardStore.getCard("test2")).thenReturn(card2);
 
         Assert.assertEquals(1, cardSearchService.getCardsContainingLabel("label1").size());
+    }
+
+
+    @Test
+    public void testCardCreatedAfterGivenTimeStamp() {
+
+        Card card1 = new Card();
+        Card card2 = new Card();
+        Card card3 = new Card();
+
+        card1.setId("test1");
+        card2.setId("test2");
+        card3.setId("test3");
+
+        card1.setCreatedTimeInMillis(4);
+        card2.setCreatedTimeInMillis(6);
+        card3.setCreatedTimeInMillis(7);
+
+        Set<String> cardIds = new HashSet<>();
+        cardIds.add("test1");
+        cardIds.add("test2");
+        cardIds.add("test3");
+
+        when(CardStore.getInstance()).thenReturn(cardStore);
+        when(cardStore.getAllCardIds()).thenReturn(cardIds);
+        when(cardStore.getCard("test1")).thenReturn(card1);
+        when(cardStore.getCard("test2")).thenReturn(card2);
+        when(cardStore.getCard("test3")).thenReturn(card3);
+        Assert.assertEquals(2, cardSearchService.getCardsCreatedAfterGivenTimeStamp(5).size());
     }
 
 }

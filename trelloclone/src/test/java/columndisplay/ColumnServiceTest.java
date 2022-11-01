@@ -2,7 +2,6 @@ package columndisplay;
 
 import enitites.Card;
 import enitites.Column;
-import enitites.Label;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,13 +21,13 @@ import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(fullyQualifiedNames = "store.*")
-public class ColumnDisplayTest {
+public class ColumnServiceTest {
 
     @Mock
     ColumnStore columnStore;
 
     @InjectMocks
-    ColumnDisplayService columnDisplayService = new ColumnDisplayServiceImpl();
+    ColumnService columnService = new ColumnServiceImpl();
 
     @Before
     public void beforeAll() {
@@ -45,7 +44,7 @@ public class ColumnDisplayTest {
         column.setCardMap(cardMap);
         when(ColumnStore.getInstance()).thenReturn(columnStore);
         when(columnStore.getColumn("test1")).thenReturn(column);
-        Assert.assertEquals(2, columnDisplayService.displayCardsInColumn("test1").size());
+        Assert.assertEquals(2, columnService.displayCardsInColumn("test1").size());
     }
 
 }
