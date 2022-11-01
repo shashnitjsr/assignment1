@@ -8,15 +8,18 @@ public class Card {
     private Map<String, Label> labelMap;
     private long createdTimeInMillis;
     private long lastUpdatedTimeInMillis;
+    private User user;
 
     public Card() {
     }
 
-    public Card(String id, Map<String, Label> labelMap, long createdTimeInMillis, long lastUpdatedTimeInMillis) {
+    public Card(String id, Map<String, Label> labelMap, long createdTimeInMillis, long lastUpdatedTimeInMillis,
+                User user) {
         this.id = id;
         this.labelMap = labelMap;
         this.createdTimeInMillis = createdTimeInMillis;
         this.lastUpdatedTimeInMillis = lastUpdatedTimeInMillis;
+        this.user = user;
     }
 
     public String getId() {
@@ -49,5 +52,13 @@ public class Card {
 
     public void setCreatedTimeInMillis(long createdTimeInMillis) {
         this.createdTimeInMillis = createdTimeInMillis;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

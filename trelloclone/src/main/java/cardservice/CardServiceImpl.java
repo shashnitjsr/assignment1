@@ -2,6 +2,7 @@ package cardservice;
 
 import enitites.Card;
 import enitites.Label;
+import enitites.User;
 import store.CardStore;
 
 import java.util.LinkedList;
@@ -41,5 +42,10 @@ public class CardServiceImpl implements CardService {
             }
         }
         return cards;
+    }
+
+    @Override
+    public List<Card> getCardsHighlightedForAUser(User user) {
+        return null;
     }
 }
