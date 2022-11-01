@@ -32,6 +32,14 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public List<Card> getCardsCreatedAfterGivenTimeStamp(long timeInMillis) {
-        return null;
+        List<Card> cards = new LinkedList<>();
+        Set<String> allCardIds = cardStore.getAllCardIds();
+        for(String cardId: allCardIds) {
+            Card card = cardStore.getCard(cardId);
+            if(card.getCreatedTimeInMillis() > timeInMillis) {
+                cards.add(card);
+            }
+        }
+        return cards;
     }
 }
